@@ -1,0 +1,17 @@
+CREATE TABLE IF NOT EXISTS usuario (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    email VARCHAR(150) NOT NULL UNIQUE,
+    senha VARCHAR(100) NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS tarefa (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    titulo VARCHAR(150) NOT NULL,
+    descricao TEXT NOT NULL,
+    categoria VARCHAR(20) NOT NULL,
+    status VARCHAR(20) NOT NULL,
+    data_entrega DATE NOT NULL,
+    usuario_id INT NOT NULL,
+    FOREIGN KEY (usuario_id) REFERENCES usuario(id) ON DELETE CASCADE
+);
