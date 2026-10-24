@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MyTasks - Minhas tarefas</title>
+    <link rel="stylesheet" href="css/estilo.css">
+</head>
+<body>
+    <header>
+        <strong>MyTasks</strong>
+        <span>Olá, <span id="nomeUsuario"></span> <a href="#" onclick="sair(); return false;">Sair</a></span>
+    </header>
+    <main>
+        <div class="barra">
+            <h1>Minhas tarefas</h1>
+            <div>
+                <select id="filtroStatus" aria-label="Filtrar por status">
+                    <option>Todas</option>
+                    <option>Pendente</option>
+                    <option>Em andamento</option>
+                    <option>Concluído</option>
+                </select>
+                <button class="btn" onclick="abrirModal()">Nova tarefa</button>
+            </div>
+        </div>
+
+        <section>
+            <h2>Resumo</h2>
+            <p class="resumo-texto" id="resumoTexto"></p>
+            <p class="resumo-texto" id="percentual"></p>
+            <div class="progresso"><div id="preenchimento"></div></div>
+        </section>
+
+        <section>
+            <h2>Lista de tarefas</h2>
+            <div class="rolagem">
+                <table>
+                    <thead>
+                        <tr><th>Título</th><th>Categoria</th><th>Status</th><th>Entrega</th><th>Ações</th></tr>
+                    </thead>
+                    <tbody id="corpoTabela"></tbody>
+                </table>
+            </div>
+        </section>
+
+        <section>
+            <div class="cal-topo">
+                <button class="btn cinza" onclick="mudarMes(-1)">&lt;</button>
+                <h2 id="tituloMes"></h2>
+                <button class="btn cinza" onclick="mudarMes(1)">&gt;</button>
+            </div>
+            <div class="calendario" id="calendario"></div>
+        </section>
+    </main>
+
+    <div class="fundo-modal" id="modal">
+        <div class="modal">
+            <h2 id="tituloModal">Nova tarefa</h2>
+            <form id="formTarefa" novalidate>
+                <div class="campo">
+                    <label for="titulo">Título</label>
+                    <input type="text" id="titulo">
+                    <span class="erro"></span>
+                </div>
+                <div class="campo">
+                    <label for="descricao">Descrição</label>
+                    <textarea id="descricao" rows="3"></textarea>
+                    <span class="erro"></span>
+                </div>
+                <div class="campo">
+                    <label for="categoria">Categoria</label>
+                    <select id="categoria">
+                        <option value="">Selecione</option>
+                        <option>Prova</option>
+                        <option>Trabalho</option>
+                        <option>Leitura</option>
+                    </select>
+                    <span class="erro"></span>
+                </div>
+                <div class="campo">
+                    <label for="data">Data de entrega</label>
+                    <input type="date" id="data">
+                    <span class="erro"></span>
+                </div>
+                <div class="campo">
+                    <label for="status">Status</label>
+                    <select id="status">
+                        <option>Pendente</option>
+                        <option>Em andamento</option>
+                        <option>Concluído</option>
+                    </select>
+                    <span class="erro"></span>
+                </div>
+                <span class="erro" id="erroModal"></span>
+                <div class="acoes">
+                    <button type="button" class="btn cinza" onclick="fecharModal()">Cancelar</button>
+                    <button type="submit" class="btn">Salvar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script src="js/api.js"></script>
+    <script src="js/tarefas.js"></script>
+</body>
+</html>

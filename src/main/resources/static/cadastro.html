@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MyTasks - Cadastro</title>
+    <link rel="stylesheet" href="css/estilo.css">
+</head>
+<body>
+    <header><strong>MyTasks</strong></header>
+    <div class="caixa">
+        <h1>Criar conta</h1>
+        <p class="sucesso" id="mensagem">Cadastro validado! Redirecionando para o login...</p>
+        <p class="aviso" id="mensagemErro"></p>
+        <form id="formCadastro" novalidate>
+            <div class="campo">
+                <label for="nome">Nome</label>
+                <input type="text" id="nome">
+                <span class="erro"></span>
+            </div>
+            <div class="campo">
+                <label for="email">E-mail</label>
+                <input type="email" id="email">
+                <span class="erro"></span>
+            </div>
+            <div class="campo">
+                <label for="senha">Senha</label>
+                <input type="password" id="senha">
+                <span class="erro"></span>
+            </div>
+            <div class="campo">
+                <label for="confirmar">Confirmar senha</label>
+                <input type="password" id="confirmar">
+                <span class="erro"></span>
+            </div>
+            <button type="submit" class="btn cheio">Cadastrar</button>
+        </form>
+        <p class="link">Já tem conta? <a href="index.html">Entrar</a></p>
+    </div>
+    <script src="js/api.js"></script>
+    <script src="js/validacao.js"></script>
+</body>
+</html>
