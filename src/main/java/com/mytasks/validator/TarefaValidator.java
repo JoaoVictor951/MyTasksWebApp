@@ -10,10 +10,20 @@ import com.mytasks.util.DataUtil;
 @Component
 public class TarefaValidator {
 
+    // limites iguais aos das colunas do banco de dados
+    private static final int TAMANHO_MAXIMO_TITULO = 150;
+    private static final int TAMANHO_MAXIMO_DESCRICAO = 1000;
+
     public void validar(String titulo, String descricao, String categoria,
                         String status, String dataTexto) throws RegraNegocioException {
         if (vazio(titulo) || vazio(descricao) || vazio(dataTexto)) {
             throw new RegraNegocioException("Preencha todos os campos!");
+        }
+        if (titulo.trim().length() > TAMANHO_MAXIMO_TITULO) {
+            throw new RegraNegocioException("O título pode ter no máximo 150 caracteres!");
+        }
+        if (descricao.trim().length() > TAMANHO_MAXIMO_DESCRICAO) {
+            throw new RegraNegocioException("A descrição pode ter no máximo 1000 caracteres!");
         }
         if (Categoria.deTexto(categoria) == null) {
             throw new RegraNegocioException("Categoria inválida!");

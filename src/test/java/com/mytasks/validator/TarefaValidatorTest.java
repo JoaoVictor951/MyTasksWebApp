@@ -72,4 +72,21 @@ public class TarefaValidatorTest {
         esperarErro("Data inválida! Use formato válido: 20/03/2026",
                 "Titulo", "desc", "Prova", "Pendente", "2026-03-20");
     }
+
+    @Test
+    public void tituloComMaisDe150Caracteres() {
+        esperarErro("O título pode ter no máximo 150 caracteres!",
+                "a".repeat(151), "desc", "Prova", "Pendente", "20/03/2026");
+    }
+
+    @Test
+    public void tituloComExatamente150CaracteresEhValido() throws RegraNegocioException {
+        validator.validar("a".repeat(150), "desc", "Prova", "Pendente", "20/03/2026");
+    }
+
+    @Test
+    public void descricaoComMaisDe1000Caracteres() {
+        esperarErro("A descrição pode ter no máximo 1000 caracteres!",
+                "Titulo", "a".repeat(1001), "Prova", "Pendente", "20/03/2026");
+    }
 }
